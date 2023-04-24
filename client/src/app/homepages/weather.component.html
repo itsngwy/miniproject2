@@ -1,0 +1,33 @@
+<br><h2>&ensp;Weathers in Singapore</h2>
+
+  <div class="row">
+    <div class="column left">
+      <table>
+        <tr>
+            <p>Last updated by Data.gov.sg: <b><span>{{ weathers?.updatedTimeStamp }}</span></b></p>
+            <p>Valid Weather Start Time: <b><span>{{ weathers?.validStartTime }}</span></b></p>
+            <p>Valid Weather End Time: <b><span>{{ weathers?.validEndTime }}</span></b></p>
+        </tr>
+        <tr *ngFor="let w of weathers?.listOfWeatherInAreas">
+            <div>
+                <td class="cart" >
+                    <p><span>{{ w.area }}</span> - <span>{{ w.forecast }}</span></p>
+                </td>
+                <td>
+                    <form id="favouriteForm">
+                        <!-- <a title="Love it" class="btn" onclick="document.getElementById('favouriteForm').submit();"><span>&#x2764;</span> Favourite!</a> -->
+                        <!-- <a><button type="button" (click)="setFavorite(area)" title="Love it" class="btn"> <span>&#x2764;</span></button></a> -->
+                        <a><button pButton pRipple (click)="setFavorite(area)" type="button" icon="pi pi-heart" class="p-button-rounded p-button-help p-button-text"></button></a>
+                        <input type="hidden" [value]="w.area" #area>
+                    </form>
+                </td>
+            </div>
+        </tr>
+      </table>
+    </div>
+
+    <div class="column right">
+      <h3>Weather Map</h3>
+      <iframe width="800" height="500" src="https://data.gov.sg/dataset/weather-forecast/resource/571ef5fb-ed31-48b2-85c9-61677de42ca9/view/4c127d9a-cba6-445a-8fc1-978b565f9bf7" frameBorder="0"> </iframe>
+    </div>
+  </div>

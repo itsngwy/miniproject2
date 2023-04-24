@@ -1,0 +1,18 @@
+.container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-5 {
+    margin-bottom: 5rem;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.6;
+}

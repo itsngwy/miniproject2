@@ -1,0 +1,59 @@
+<div>
+
+    <div class="column left">
+        <br><h2>Traffic Updates</h2>
+        <form [formGroup]="form" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td>Upload Image:</td>
+                    <td><input type="file" [attr.disabled]="imageData.length > 0 ? '' : null" formControlName="fileUpload" (change)="onFileSelected($event)" #fileUpload></td>
+                </tr>
+                <tr>
+                    <td>Take a Picture:</td>
+                    <td><button pButton [disabled]="picDisable" [routerLink]="['/home/camera']" icon="pi pi-camera" class="p-button-sm p-button-text p-button-secondary" label="Take a Picture"></button></td>
+                </tr>
+                <tr *ngIf="imageData.length > 0">
+                    <td></td>
+                    <td><img [src]="imageData" class="thumbnail"></td>
+                </tr>
+                <tr>
+                    <td>Header:</td>
+                    <td><input type="text" size="30" formControlName="title" pInputText></td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td>
+                        <textarea cols="30" rows="5" formControlName="description" pInputTextarea autoResize="autoResize"></textarea>
+                    </td>
+                </tr>    
+                <tr>
+                    <td></td>
+                    <td>
+                        <button pButton pRipple label="Clear" (click)="clearForm()" icon="pi pi-trash" class="p-button-sm p-button-text p-button-secondary" ></button>
+                        <button pButton type="button" (click)="upload()" label="Upload" icon="pi pi-check" class="p-button-sm p-button-text p-button-secondary"></button>
+                        <!-- <button type="button" [routerLink]="['/']">Back</button> -->
+                        <!-- <button type="submit" (click)="upload()">Upload</button>
+                        <button type="button" (click)="clearForm()">Clear</button> -->
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div class="column right">
+        <br>
+        <p-card [header]="tr.title" [subheader]="'By: '+ tr.firstName + ', ' + tr.email" [style]="{ width: '430px' }" *ngFor="let tr of trafficImages">
+            <ng-template pTemplate="header">
+                <img [src]="tr.url" width="450" height="300">
+            </ng-template>
+                <!-- <span>Sent by: {{ tr.email }}</span><br>
+                <span>Location: {{ tr.title }}</span><br> -->
+                <!-- <p></p> -->
+                <p>Description:  {{ tr.description }}</p>
+            <ng-template pTemplate="footer">
+                <p>Date: {{ tr.date }}</p>
+            </ng-template>
+        </p-card>
+    </div>
+</div>
+
+

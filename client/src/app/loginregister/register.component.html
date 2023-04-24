@@ -1,0 +1,66 @@
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section">Registration</h2>
+                <span id = "message" style="color:red">{{ message }}</span>
+            </div> -->
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="login-wrap p-0">
+                    <h2 class="heading-section text-center">Registration</h2>
+                    &emsp;<h5 class="text-center"><span id="message" style="color:red" >{{ message }}</span></h5>
+                    <div class="text-center"><span id="message" style="color:red" *ngIf="(form.get('password')?.dirty && form.get('repeatpw')?.dirty) && form.invalid">Make sure password is 8 characters long, consists at least of 1 number, 1 uppercase and lowercase, and 1 special character</span></div>
+                    <h3 class="mb-4 text-center">Create an account</h3>
+                    <!-- &emsp;<span id = "message" style="color:red" data-th-text="${registerMessage}"></span> -->
+                    <!-- <form class="signin-form" method="POST" action="/register" onsubmit ="return verifyPassword()"> -->
+                    <form [formGroup]="form" (ngSubmit)="register()">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="First Name" formControlName="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email address" formControlName="email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" #password class="form-control" placeholder="Password" formControlName="password" required>
+                            <!-- Show password -->
+                            <span toggle="#password"class="fa fa-fw fa-eye field-icon toggle-password" (click)="showPassword(password)"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" #repeatpw class="form-control" placeholder="Repeat Password" formControlName="repeatpw" required>
+                            <!-- Show password -->
+                            <span toggle="#repeatpw" class="fa fa-fw fa-eye field-icon toggle-password" (click)="showPassword(repeatpw)"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary submit px-3" [disabled]="form.invalid">Register</button>
+                        </div>
+
+                        <!-- <div class="form-group d-md-flex">
+                            <div class="w-50">
+                                <label class="checkbox-wrap checkbox-primary">Remember Me
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="w-50 text-md-right">
+                                <a href="#" style="color: #fff">Forgot Password</a>
+                            </div>
+                        </div> -->
+                    </form>
+                    <p class="w-100 text-center">&mdash; Registered? &mdash;</p>
+                    <div class="social d-flex text-center">
+                        <a [routerLink]="['/']" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span>
+                            Login</a>
+                        <!-- <a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span>
+                            Twitter</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

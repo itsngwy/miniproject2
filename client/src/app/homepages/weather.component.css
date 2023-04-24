@@ -1,0 +1,98 @@
+
+* {
+box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    /* padding: 10px; */
+    padding-left: 30px;
+    /* margin-left: 10px;
+    padding-left: 50px; */
+}
+
+.left {
+    width: 40%;
+    /* background-color: #aaa; */
+    /* margin-left: 10px; */
+}
+
+.right {
+    width: 60%;
+    /* background-color:#bbb; */
+}
+
+.rounded-circle {
+    width:30px;
+    height:30px;
+}
+
+form {
+    margin-left: 20px;
+}
+
+/* Clear floats after the columns */
+/* .row:after {
+    content: "";
+    display: table;
+    clear: both;
+} */
+
+span {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.seatsavail {
+    color: rgb(100, 165, 3);
+    font-weight: bold;
+}
+
+.standingavail {
+    color: orange;
+    font-weight: bold;
+}
+
+.limitedstanding {
+    color: red;
+    font-weight: bold;
+}
+
+/* https://codepen.io/Idered/pen/ALYLaM */
+/* CSS for favourite weather button */
+
+/* .btn1 {
+    background-color: #dbdbdb;
+    border-color: #bbb;
+    color: #666;
+} */
+
+.btn1 {
+    box-shadow: 1px 1px 0 rgba(255,255,255,0.5) inset;
+    border-radius: 3px;
+    border: 1px solid;
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 8px;
+    position: relative;
+  
+    font-size: 12px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  }
+.btn:hover,
+.btn.active {
+  text-shadow: 0 1px 0 #b12f27;
+  background-color: #f64136;
+  border-color: #b12f27;
+}
+.btn:active { box-shadow: 0 0 5px 3px rgba(0,0,0,0.2) inset; }
+.btn span { color: #f64136; }
+.btn:hover, .btn:hover span,
+.btn.active, .btn.active span { color: #eeeeee; }
+.btn:active span {
+  color: #b12f27;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+}

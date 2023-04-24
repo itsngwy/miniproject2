@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    /* padding: 10px; */
+    padding-left: 37px;
+    /* margin-left: 10px;
+    padding-left: 50px; */
+}
+
+.left {
+    width: 40%;
+    /* background-color: #aaa; */
+    /* margin-left: 10px; */
+}
+
+.right {
+    width: 60%;
+    /* background-color:#bbb; */
+}
+
+span {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.thumbnail {
+    /* width: 40vw; */
+    width: 13vw;
+    height: auto;
+}
+
+/* Upload button */
+input::file-selector-button {
+    color: rgb(83, 81, 81);
+    border: thin solid grey;
+    border-radius: 3px;
+}

@@ -1,0 +1,72 @@
+<br>
+<h2>&nbsp;&nbsp;&nbsp;Bus timing</h2>
+
+<div class="row">
+  <div class="column left">
+
+    <form [formGroup]="form">
+      <input type="text" id="busStopCode" formControlName="busCode" size="30" placeholder="Key in bus code number" required>
+      <button for="busStopCode" type="button" (click)="getBusTiming()" [disabled]="form.invalid">Get bus timing now!</button>
+    </form> <br>
+
+  <table>
+      <b><span>{{ busCode }}</span></b><br><br>
+      <!-- <p-scrollPanel [style]="{ width: '120%', height: '650px' }" styleClass="custombar1"> -->
+        <tr *ngFor="let b of buses">
+          <div>
+            <p-card [header]="b.serviceNo">
+            <td>   
+                <!-- <p>Bus: 
+                    <span>{{ b.serviceNo }}</span>
+                </p> -->
+                <p>Arriving in: &emsp;&ensp; 
+                  <span [ngClass]="{'seatsavail': b.nextBus1?.load === 'SEA', 'standingavail': b.nextBus1?.load === 'SDA', 'limitedstanding': b.nextBus1?.load === 'LSD'}">{{ b.nextBus1?.eta? b.nextBus1?.eta: '-' }}</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                  <span [ngClass]="{'seatsavail': b.nextBus2?.load === 'SEA', 'standingavail': b.nextBus2?.load === 'SDA', 'limitedstanding': b.nextBus2?.load === 'LSD'}">{{ b.nextBus2?.eta? b.nextBus2?.eta: '-'  }}</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                  <span [ngClass]="{'seatsavail': b.nextBus3?.load === 'SEA', 'standingavail': b.nextBus3?.load === 'SDA', 'limitedstanding': b.nextBus3?.load === 'LSD'}">{{ b.nextBus3?.eta? b.nextBus3?.eta: '-'  }}</span>
+                </p>
+                <p>Bus type: &emsp;&ensp;
+                    <span [ngSwitch]="b.nextBus1?.type"><img class="rounded-circle" src="/assets/images/SD.png" alt="Single" *ngSwitchCase="'SD'"> <img class="rounded-circle" src="/assets/images/DD.png" alt="Double" *ngSwitchCase="'DD'"> <img class="rounded-circle" src="/assets/images/BD.png" alt="Bendy" *ngSwitchCase="'BD'"></span> &nbsp;
+                    <span [ngSwitch]="b.nextBus2?.type"><img class="rounded-circle" src="/assets/images/SD.png" alt="Single" *ngSwitchCase="'SD'"> <img class="rounded-circle" src="/assets/images/DD.png" alt="Double" *ngSwitchCase="'DD'"> <img class="rounded-circle" src="/assets/images/BD.png" alt="Bendy" *ngSwitchCase="'BD'"></span> &nbsp;
+                    <span [ngSwitch]="b.nextBus3?.type"><img class="rounded-circle" src="/assets/images/SD.png" alt="Single" *ngSwitchCase="'SD'"> <img class="rounded-circle" src="/assets/images/DD.png" alt="Double" *ngSwitchCase="'DD'"> <img class="rounded-circle" src="/assets/images/BD.png" alt="Bendy" *ngSwitchCase="'BD'"></span>
+                </p>
+                <p>Wheelchair: &ensp;
+                    <span [ngSwitch]="b.nextBus1?.feature"><img class="rounded-circle" src="/assets/images/WC.png" alt="Wheelchair" *ngSwitchCase="'WAB'"></span> &nbsp;
+                    <span [ngSwitch]="b.nextBus2?.feature"><img class="rounded-circle" src="/assets/images/WC.png" alt="Wheelchair" *ngSwitchCase="'WAB'"></span> &nbsp;
+                    <span [ngSwitch]="b.nextBus3?.feature"><img class="rounded-circle" src="/assets/images/WC.png" alt="Wheelchair" *ngSwitchCase="'WAB'"></span>
+                </p>
+                <br>
+              </td>
+            </p-card>
+          </div>
+        </tr>
+      <!-- </p-scrollPanel> -->
+    </table>
+  </div>
+
+  <div class="column right">
+    <div class="mapouter">
+      <div class="gmap_canvas">
+        <!-- <iframe width="800" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=singapore&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+        <style>.mapouter{position:relative;text-align:right;height:500px;width:800px;}</style>
+        <a href="https://www.embedgooglemap.net"></a>
+        <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:800px;}</style> -->
+
+        <!-- Maybe do a separate component so that we also oninit to get latest geolocation and update as live location -->
+        <agm-map [zoom]="zoom"  [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)" [fitBounds]="true">
+          <!-- <agm-marker [latitude]="latitude2" [longitude]="longitude2" [agmFitBounds]="true" label="Hello"></agm-marker> -->
+          <!-- https://stackoverflow.com/questions/46843606/how-to-make-custom-arrow-mark-in-agm-map -->
+          <agm-marker [latitude]="latitude" [longitude]="longitude" iconUrl="./assets/images/lovely2.png" [agmFitBounds]="true"></agm-marker>
+        </agm-map>
+      </div>
+    </div>
+    <br>
+    
+    <!-- <img src="/assets/images/mrtmap.png" width="50" height="50" alt="mrt map" (click)="showLightbox(0)"> -->
+    <img id="myImg" src="/assets/images/mrtmap.png" width="50" height="50" alt="mrt map" (click)="enlarge()">
+    <div id="myModal" class="modal">
+      <span class="close" (click)="close($event)">&times;</span>
+      <img class="modal-content" id="img01" src="/assets/images/mrtmap.png">
+      <div id="caption"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<br><h2>&nbsp;&nbsp;Train Platform Crowd</h2>
+
+  <div>
+    <div class="column left">
+        <form [formGroup]="form">
+            <!-- <p-dropdown [options]="trainStations" [(ngModel)]="selected" placeholder="Select a City" optionLabel="name" [showClear]="true"></p-dropdown> -->
+
+            <label for="trainCode">Select train line: </label><br>
+            <select formControlName="trainCode" id="trainCode">
+                <option value="CCL">Circle Line</option>
+                <option value="CEL">Circle Line Extension - Bayfront, Marina Bay</option>
+                <option value="CGL">Changi Extension - Expo, Changi Airport</option>
+                <option value="DTL">Downtown Line</option>
+                <option value="EWL">East West Line</option>
+                <option value="NEL">North East Line</option>
+                <option value="NSL">North South Line</option>
+                <option value="BPL">Bukit Panjang LRT</option>
+                <!-- <option value="SLRT">Sengkang LRT</option>
+                <option value="PLRT">Punggol LRT</option> -->
+            </select>
+            <button for="trainCode" type="button" (click)="getTrainCrowd()" class="getCrowd">Get Crowd Level</button>
+            <!-- <button pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded p-button-success p-button-text"></button> -->
+        </form>
+        <br>
+   
+        <table>
+            <div>
+                <tr>
+                    <p>Valid Train Crowd Start Time: <b><span>{{ trainDetails?.trainStart}}</span></b></p>
+                    <p>Valid Train Crowd End Time: <b><span>{{ trainDetails?.trainEnd }}</span></b></p>
+                    <b><span>{{ trainDetails?.trainLineName }}</span></b><br><br>
+                </tr>
+                <p-scrollPanel [style]="{ width: '100%', height: '600px' }" styleClass="custombar1">
+                  <tr *ngFor="let t of trainDetails?.trainDetails" >
+                      <div>
+                      <td class="cart">
+                          <p [ngSwitch]="t.crowdLevel">
+                              <span>{{ t.stationName }}</span> &nbsp; 
+                              <span class="low" *ngSwitchCase="'l'">Low</span>
+                              <span class="mod" *ngSwitchCase="'m'">Moderate</span>
+                              <span class="high" *ngSwitchCase="'h'">High</span>
+                          </p>
+                      </td>
+                      </div>
+                  </tr>
+                </p-scrollPanel>
+            </div>
+      </table>
+    
+    </div>
+    
+    <div class="column right">
+      <h3>Train Map</h3>
+      <img id="myImg" src="/assets/images/mrtmap.png" width="800" height="800" alt="mrt map" (click)="enlarge()">
+      <div id="myModal" class="modal">
+        <span class="close" (click)="close($event)">&times;</span>
+        <img class="modal-content" id="img01" src="/assets/images/mrtmap.png">
+        <div id="caption"></div>
+      </div>
+    </div>
+    
+  </div>
+
+    <!-- <script  src="/js/mdb.min.js"></script> -->
+

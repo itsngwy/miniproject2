@@ -1,0 +1,43 @@
+<!-- <table>
+    <tr *ngFor="let i of trafficCameras.value">
+        <div>
+            <p>{{ i.CameraID }}</p>
+            <img [src]="i.ImageLink" width="550" height="350">
+        </div>
+    </tr>
+</table> -->
+
+
+
+<br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+        <br>
+            <table class="lead text-center">
+                <h1 class="text-center mb-5">Traffic Cameras</h1>
+                <p-scrollPanel [style]="{ width: '100%', height: '1000px' }" styleClass="custombar1" >
+                    <tr *ngFor="let i of trafficCameras.value" class="text-center">
+                        <div (click)="enlarge(i.ImageLink)">
+                            <!-- <p>{{ i.CameraID }}</p> -->
+                            <img [src]="i.ImageLink" width="700" height="450">
+                        </div>
+                        <br>
+                    </tr>
+                </p-scrollPanel>
+            </table>
+        </div>
+    </div>
+  </div>
+
+
+    <div id="myModal" class="modal">
+      <span class="close" (click)="close($event)">&times;</span>
+      <img class="modal-content" id="img01" [src]="image">
+      <div id="caption"></div>
+    </div>
+  
+  
+    
+
+

@@ -1,0 +1,24 @@
+/* This is for the home button image */
+@import "https://use.fontawesome.com/releases/v5.11.2/css/all.css";
+
+/* We are using the bootstrap from node_modules */
+/* This is for the navbar */
+/* @import "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"; */
+
+/* nav bar brown color, and button*/
+/* @import url("mdb.min.css"); */
+
+/* nav text color */
+.form-white.input-group>.form-control:focus {
+    border-color: #fff;
+    box-shadow: inset 0 0 0 1px #fff;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+color: #fff;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
+color: rgba(255, 255, 255, 0.75);
+}

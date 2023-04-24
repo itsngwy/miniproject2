@@ -1,0 +1,17 @@
+<div class="wrapper" >
+    <table>
+        <tr>
+            <!-- We dont need the (imageCapture)="snapshot($event)" also can work, because we already subscribe to it -->
+            <!-- <webcam [width]="width" [height]="height" [trigger]="trigger" (imageCapture)="snapshot($event)"></webcam> -->
+        
+            <!-- This is a child component since the tag is in the app.component -->
+            <webcam [width]="1200" [height]="600" [trigger]="trigger"></webcam>
+        </tr>
+        <tr align="center">
+            <!-- <button type="button" (click)="snap()">SNAP!</button> -->
+            <button pButton pRipple type="button" icon="pi pi-camera" class="p-button-rounded p-button-secondary" (click)="snap()"></button>
+        </tr>
+    </table>
+
+    
+</div>
